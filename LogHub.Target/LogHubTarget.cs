@@ -1,4 +1,5 @@
-﻿using Microsoft.ServiceBus;
+﻿using System;
+using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Newtonsoft.Json;
 using NLog;
@@ -33,7 +34,8 @@ namespace LogHub.Target
 
                 if (!nsm.TopicExists(Topic))
                 {
-                    nsm.CreateTopic(Topic);
+                    var td = new TopicDescription(Topic) {DefaultMessageTimeToLive = TimeSpan.FromMinutes(1)};
+                    nsm.CreateTopic(td);
                 }
 
                 _client = TopicClient.CreateFromConnectionString(ConnectionString, Topic);
