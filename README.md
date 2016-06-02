@@ -63,3 +63,12 @@ You subscribe to a topic on your Service Bus by clicking "Add Source". You can s
 * Enabled - to turn streaming of log entries on or off.
 
 To configure how NLog deals with the received log entries, click the "Config" button on the main window. This will expose an NLog.xml file that you should edit in a text editor to [configure NLog's behaviour](https://github.com/NLog/NLog/wiki/Tutorial#configuration) according to your viewer's requirements.
+
+## Not seeing any log entries on your local machine?
+Firstly, check whether you're seeing anything in your local log output from LogHub itself. If LogHub  has run into any problems, it will output the details to your log. 
+
+One of the most common issues is that LogHub can't reach the Azure Service Bus because of firewall restrictions or anti-virus / anti-malware software preventing ```LogHub.exe``` from accessing the Internet. This should get reported in your local log target if it's the case.
+
+It could also be that your Connection String for the application's topic is incorrect. Again, this should surface in your local log.
+
+If you're *still* not seeing anything, double-check the rule elements in your NLog.xml file. We **strongly** recommend that you keep the log level at 'Trace' level (the lowest possible level). In that way, everything you receive *will* be logged. Any filtering by log level should either be done in the NLog configuration for your remote application or within your viewing tool.
