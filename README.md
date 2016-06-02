@@ -1,10 +1,13 @@
-# LogHub
+<img src="https://raw.githubusercontent.com/RedBearSys/LogHub/master/Media/logo.png" width="300" />
+
 An NLog-based bridge between remote applications and local debugging software using Azure Service Bus.
 
 ## Introduction
-LogHub is a combination of a system tray application for Windows and an [NLog](http://nlog-project.org/) target. Log-events are streamed to an [Azure Service Bus](https://azure.microsoft.com/en-gb/services/service-bus/) topic. LogHub subscribes to that topic, deserialises the log event data and uses a local copy of NLog to forward the events to a target on your machine.
+LogHub is a combination of a system tray application for Windows and an [NLog](http://nlog-project.org/) target. Using that target, log-events are streamed to an [Azure Service Bus](https://azure.microsoft.com/en-gb/services/service-bus/) topic. LogHub subscribes to that topic, deserialises the log event data and uses a local copy of NLog to forward the events to a target on your machine.
 
 This allows you to use a local log viewing application - e.g. [Sentinel](http://sentinel.codeplex.com/) or [Log4View](http://www.log4view.com/log4view/) - with production applications running anywhere in the world.
+
+<img src="https://raw.githubusercontent.com/RedBearSys/LogHub/master/Media/diagram.png" />
 
 The benefits of using LogHub versus getting your production applications to connect directly to a port on your workstation include:
 
