@@ -67,7 +67,7 @@ To configure how NLog deals with the received log entries, click the "Config" bu
 ## Not seeing any log entries on your local machine?
 Firstly, check whether you're seeing anything in your local log output from LogHub itself. If LogHub  has run into any problems, it will output the details to your log. 
 
-One of the most common issues is that LogHub can't reach the Azure Service Bus because of firewall restrictions or anti-virus / anti-malware software preventing ```LogHub.exe``` from accessing the Internet. This should get reported in your local log target if it's the case.
+One of the most common issues is that LogHub can't reach the Azure Service Bus because of firewall restrictions or anti-virus / anti-malware software preventing ```LogHub.exe``` from accessing the Internet. This should get reported in your local log target if it's the case. Your firewall should allow workstations to access remote IP addresses within the 9350 to 9354 port range.
 
 It could also be that your Connection String for the application's topic is incorrect. Again, this should surface in your local log.
 
