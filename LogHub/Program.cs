@@ -13,10 +13,18 @@ namespace LogHub
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            Application.Run(new MainForm());
+            bool created;
+            var mutexName = $"Global\\LogHub~{Environment.UserDomainName}~{Environment.UserName}";
+
+            using (new System.Threading.Mutex(true, mutexName, out created))
+            {
+                if (!created) return;
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+                Application.Run(new MainForm());
+            }
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
