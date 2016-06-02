@@ -25,11 +25,12 @@ Topics can be created automatically via the NLog target. Topics that are created
 
 ## Logging setup
 
-Either download the code and build it yourself, or download an [installer](https://rbpublic.blob.core.windows.net/loghub/loghub-setup.msi).
+Use NuGet to install the LogHub.Target package:
 
-Add a reference to ```LogHub.Target.dll``` in your project and also add NLog (via Nuget).
-
-You should use a ```BufferingWrapper``` with the LogHub target as follows, specifying your Service Bus connection string and a topic name:
+```
+Install-Package LogHub.Target
+```
+Then [configure NLog](https://github.com/NLog/NLog/wiki/Tutorial#configuration) to use the LogHub Target. You should use a ```BufferingWrapper``` with the LogHub target as follows, specifying your Service Bus connection string and a topic name:
 
 ```xml
   <nlog>
@@ -50,6 +51,8 @@ You should use a ```BufferingWrapper``` with the LogHub target as follows, speci
 You should then create log entries in your application in the [usual way](https://github.com/nlog/nlog/wiki/Tutorial#writing-log-messages).
 
 ## Receiving log entries
+Either download the code and build it yourself, or download an [installer](https://rbpublic.blob.core.windows.net/loghub/loghub-setup.msi).
+
 Run LogHub from your start menu. It will launch as a system tray application, so double-click the tray icon to display the main user interface.
 
 You subscribe to a topic on your Service Bus by clicking "Add Source". You can specify the following fields:
@@ -60,3 +63,12 @@ You subscribe to a topic on your Service Bus by clicking "Add Source". You can s
 * Enabled - to turn streaming of log entries on or off.
 
 To configure how NLog deals with the received log entries, click the "Config" button on the main window. This will expose an NLog.xml file that you should edit in a text editor to [configure NLog's behaviour](https://github.com/NLog/NLog/wiki/Tutorial#configuration) according to your viewer's requirements.
+
+## Not seeing any log entries on your local machine?
+Firstly, check whether you're seeing anything in your local log output from LogHub itself. If LogHub  has run into any problems, it will output the details to your log. 
+
+One of the most common issues is that LogHub can't reach the Azure Service Bus because of firewall restrictions or anti-virus / anti-malware software preventing ```LogHub.exe``` from accessing the Internet. This should get reported in your local log target if it's the case.
+
+It could also be that your Connection String for the application's topic is incorrect. Again, this should surface in your local log.
+
+If you're *still* not seeing anything, double-check the rule elements in your NLog.xml file. We **strongly** recommend that you keep the log level at 'Trace' level (the lowest possible level). In that way, everything you receive *will* be logged. Any filtering by log level should either be done in the NLog configuration for your remote application or within your viewing tool.
