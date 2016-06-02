@@ -79,10 +79,27 @@ namespace LogHub
 
         private void txtTopic_Validating(object sender, CancelEventArgs e)
         {
-            if (txtTopic.Text.Length == 0)
+            var value = txtTopic.Text.Replace("\\", "/");
+
+            if (value.Length == 0)
             {
                 e.Cancel = true;
                 errProv.SetError(txtTopic, @"A topic must be provided.");
+            }
+            else if (value.Length > 260)
+            {
+                e.Cancel = true;
+                errProv.SetError(txtTopic, @"The topic name is too long.");
+            }
+            else if (value.StartsWith("/") || value.EndsWith("/"))
+            {
+                e.Cancel = true;
+                errProv.SetError(txtTopic, @"The topic name cannot begin or end with slashes.");
+            }
+            else if (value.Contains("?") || value.Contains("#") || value.Contains("@"))
+            {
+                e.Cancel = true;
+                errProv.SetError(txtTopic, @"The topic name cannot contain '?', '#' or '@'.");
             }
         }
 
