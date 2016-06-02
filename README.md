@@ -9,7 +9,7 @@ This allows you to use a local log viewing application - e.g. [Sentinel](http://
 The benefits of using LogHub versus getting your production applications to connect directly to a port on your workstation include:
 
 * multiple users can monitor the same log at the same time;
-* no need to punch holes in firewalls or external ports to internal ports - developers can choose which logs to stream without IT involvement.
+* no need to punch holes in firewalls or map external ports to internal ports - developers can choose which logs to stream without IT involvement.
 
 ## Service Bus setup
 You must first create a Service Bus to receive, store and forward your NLog log-events. Each application will be a topic within that Service Bus.
@@ -44,7 +44,7 @@ You should use a ```BufferingWrapper``` with the LogHub target as follows, speci
   </nlog>
   ```
 
-You should then create log entries in your applicatio in the [usual way](https://github.com/nlog/nlog/wiki/Tutorial#writing-log-messages).
+You should then create log entries in your application in the [usual way](https://github.com/nlog/nlog/wiki/Tutorial#writing-log-messages).
 
 ## Receiving log entries
 Run LogHub from your start menu. It will launch as a system tray application, so double-click the tray icon to display the main user interface.
