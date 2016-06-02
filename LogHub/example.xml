@@ -9,6 +9,12 @@ To learn how to edit this file, visit: https://github.com/nlog/nlog/wiki/Configu
     <target name="log4view" type="NLogViewer" address="tcp://127.0.0.1:878" />
   </targets>
   <rules>
-    <logger name="*" minLevel="Debug" appendTo="log4view"/>
+    <!-- 
+    We STRONGLY recommend that you use a minLevel of 'Trace'.
+    
+    Filter log messages by level at the source application (so LogHub doesn't receive any
+    low-level logs to begin with) or in your destination viewing tool; NOT here!
+    -->
+    <logger name="*" minLevel="Trace" appendTo="log4view"/>
   </rules>
 </nlog>
