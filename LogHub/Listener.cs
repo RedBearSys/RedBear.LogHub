@@ -28,20 +28,30 @@ namespace LogHub
             {
                 var namespaceManager = NamespaceManager.CreateFromConnectionString(_source.ConnectionString);
 
-                if (!namespaceManager.SubscriptionExists(_source.Topic, $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}"))
+                if (
+                    !namespaceManager.SubscriptionExists(_source.Topic,
+                        $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}"))
                 {
-                    namespaceManager.CreateSubscription(_source.Topic, $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}");
+                    namespaceManager.CreateSubscription(_source.Topic,
+                        $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}");
                 }
 
-                _client = SubscriptionClient.CreateFromConnectionString(_source.ConnectionString, _source.Topic, $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}");
+                _client = SubscriptionClient.CreateFromConnectionString(_source.ConnectionString, _source.Topic,
+                    $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}");
+
+                var options = new OnMessageOptions();
+                options.ExceptionReceived += Options_ExceptionReceived;
 
                 _client.OnMessage(message =>
                 {
-                    var json = (JObject)JsonConvert.DeserializeObject(message.GetBody<string>());
+                    var json = (JObject) JsonConvert.DeserializeObject(message.GetBody<string>());
 
                     var logEvent = new LogEventInfo
                     {
-                        LoggerName = !string.IsNullOrEmpty(_source.Prefix) ? _source.Prefix + json["LoggerName"].Value<string>() : json["LoggerName"].Value<string>(),
+                        LoggerName =
+                            !string.IsNullOrEmpty(_source.Prefix)
+                                ? _source.Prefix + json["LoggerName"].Value<string>()
+                                : json["LoggerName"].Value<string>(),
                         TimeStamp = json["TimeStamp"].Value<DateTime>(),
                         Level = LogLevel.FromString(json["Level"]["Name"].Value<string>()),
                         Message = json["FormattedMessage"].Value<string>()
@@ -78,12 +88,30 @@ namespace LogHub
                     }
 
                     LogManager.GetLogger(logEvent.LoggerName).Log(logEvent);
-                });
+                }, options);
             }
-            catch (MessagingException ex)
+            catch (TimeoutException ex)
+            {
+                var message = $@"
+There's a problem communicating with Azure Service Bus.
+
+Check your connection string, internet access, firewalls and any anti-virus or anti-malware applications that might be blocking access.
+
+Exception:
+
+{ex.Message}
+";
+                LogManager.GetLogger("LogHub").Warn(message.Trim());
+            }
+            catch (Exception ex)
             {
                 LogManager.GetLogger("LogHub").Error(ex);
             }
+        }
+
+        private void Options_ExceptionReceived(object sender, ExceptionReceivedEventArgs e)
+        {
+            LogManager.GetLogger("LogHub").Error(e.Exception);
         }
 
         public void Stop()
