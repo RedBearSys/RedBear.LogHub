@@ -4,15 +4,15 @@
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_MINDOTNETVERSION" MultiBuildValue="DefaultBuild:4.5" ValueLocId="-"/>
     <ROW Property="ALLUSERS" Value="1"/>
-    <ROW Property="ARMDisplayName" Value="LogHub 1.0.2.0"/>
+    <ROW Property="ARMDisplayName" Value="LogHub 1.0.4.0"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="LogHub.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Red Bear Systems Limited"/>
-    <ROW Property="ProductCode" Value="2057:{F95BFE1E-738C-4BC6-B335-4CC2F6DD8BE8} " Type="16"/>
+    <ROW Property="ProductCode" Value="2057:{2259BE94-2F0A-4A68-A693-B2E134908CF9} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2057"/>
     <ROW Property="ProductName" Value="LogHub"/>
-    <ROW Property="ProductVersion" Value="1.0.2" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.4" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{885AEB05-A68F-46E1-86D3-F22856CAA0E0}"/>
