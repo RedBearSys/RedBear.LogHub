@@ -92,14 +92,16 @@ namespace LogHub
             }
             catch (TimeoutException ex)
             {
-                var message = $@"
+                var message =
+                    $@"
 There's a problem communicating with Azure Service Bus.
 
 Check your connection string, internet access, firewalls and any anti-virus or anti-malware applications that might be blocking access.
 
 Exception:
 
-{ex.Message}
+{ex
+                        .Message}
 ";
                 LogManager.GetLogger("LogHub").Warn(message.Trim());
             }
@@ -111,12 +113,15 @@ Exception:
 
         private void Options_ExceptionReceived(object sender, ExceptionReceivedEventArgs e)
         {
-            LogManager.GetLogger("LogHub").Error(e.Exception);
+            if (_client != null && !_client.IsClosed)
+            {
+                LogManager.GetLogger("LogHub").Error(e.Exception);
+            }
         }
 
         public void Stop()
         {
-            _client.Close();
+            _client?.Close();
         }
     }
 }
