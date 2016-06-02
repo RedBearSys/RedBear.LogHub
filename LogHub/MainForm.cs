@@ -108,6 +108,7 @@ namespace LogHub
 
         private void tsbStop_Click(object sender, EventArgs e)
         {
+            LogSources.Instance.StopListeners();
             Application.Exit();
         }
 
@@ -129,6 +130,7 @@ namespace LogHub
 
         private void stopLogHubToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LogSources.Instance.StopListeners();
             Application.Exit();
         }
 
@@ -161,6 +163,20 @@ namespace LogHub
         private void MainForm_MouseEnter(object sender, EventArgs e)
         {
             CheckButtonVisibility();
+        }
+
+        private async void tsbRestart_Click(object sender, EventArgs e)
+        {
+            tsbRestart.Enabled = false;
+
+            await Task.Run(() =>
+            {
+                LogSources.Instance.StopListeners();
+                LogSources.Instance.StartListeners();
+            });
+
+            tsbRestart.Enabled = true;
+            MessageBox.Show(@"Listeners have been restarted successfully.", @"Done!", MessageBoxButtons.OK);
         }
     }
 }

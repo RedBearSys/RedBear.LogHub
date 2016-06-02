@@ -47,6 +47,8 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopLogHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbRestart = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstSources)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logSourceBindingSource)).BeginInit();
@@ -60,6 +62,8 @@
             this.tsbEdit,
             this.tsbDelete,
             this.toolStripSeparator1,
+            this.tsbRestart,
+            this.toolStripSeparator3,
             this.tsbConfig,
             this.toolStripSeparator2,
             this.tsbStop});
@@ -198,7 +202,7 @@
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
@@ -208,6 +212,21 @@
             this.stopLogHubToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.stopLogHubToolStripMenuItem.Text = "Quit";
             this.stopLogHubToolStripMenuItem.Click += new System.EventHandler(this.stopLogHubToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbRestart
+            // 
+            this.tsbRestart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRestart.Image = ((System.Drawing.Image)(resources.GetObject("tsbRestart.Image")));
+            this.tsbRestart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRestart.Name = "tsbRestart";
+            this.tsbRestart.Size = new System.Drawing.Size(23, 22);
+            this.tsbRestart.Text = "Restart Listeners";
+            this.tsbRestart.Click += new System.EventHandler(this.tsbRestart_Click);
             // 
             // MainForm
             // 
@@ -252,6 +271,8 @@
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsbConfig;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsbRestart;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

@@ -57,13 +57,7 @@ namespace LogHub
         {
             Sources.Add(source);
             Save();
-
-            if (source.Enabled)
-            {
-                var listener = new Listener(source);
-                listener.Start();
-                _listeners.Add(listener);
-            }
+            StartListener(source);
         }
 
         public void Delete(LogSource source)
@@ -92,25 +86,34 @@ namespace LogHub
                 _listeners.Remove(listener);
             }
 
-            if (source.Enabled)
-            {
-                listener = new Listener(source);
-                listener.Start();
-                _listeners.Add(listener);
-            }
+            StartListener(source);
         }
 
         public void StartListeners()
         {
-
             foreach (var source in Sources)
             {
-                if (source.Enabled)
-                {
-                    var listener = new Listener(source);
-                    listener.Start();
-                    _listeners.Add(listener);
-                }
+                StartListener(source);
+            }
+        }
+
+        public void StopListeners()
+        {
+            foreach (var listener in _listeners)
+            {
+                listener.Stop();
+            }
+
+            _listeners.Clear();
+        }
+
+        private void StartListener(LogSource source)
+        {
+            if (source.Enabled)
+            {
+                var listener = new Listener(source);
+                listener.Start();
+                _listeners.Add(listener);
             }
         }
     }
