@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>LogHub.Target</id>
+        <version>1.0.4</version>
+        <title>NLog Target for use with LogHub</title>
+        <authors>Red Bear Systems Limited</authors>
+        <projectUrl>https://github.com/RedBearSys/LogHub</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/RedBearSys/LogHub/master/Media/icon.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>NLog Target for use with LogHub</description>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="NLog" version="4.3.4" />
+                <dependency id="Newtonsoft.Json" version="8.0.3" />
+                <dependency id="WindowsAzure.ServiceBus" version="3.2.2" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\LogHub\bin\Release\LogHub.Target.dll" target="LogHub.Target.dll" />
+    </files>
+</package>
