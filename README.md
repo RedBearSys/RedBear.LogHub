@@ -25,11 +25,12 @@ Topics can be created automatically via the NLog target. Topics that are created
 
 ## Logging setup
 
-Either download the code and build it yourself, or download an [installer](https://rbpublic.blob.core.windows.net/loghub/loghub-setup.msi).
+Use NuGet to install the LogHub.Target package:
 
-Add a reference to ```LogHub.Target.dll``` in your project and also add NLog (via Nuget).
-
-You should use a ```BufferingWrapper``` with the LogHub target as follows, specifying your Service Bus connection string and a topic name:
+```
+Install-Package LogHub.Target
+```
+Then [configure NLog](https://github.com/NLog/NLog/wiki/Tutorial#configuration) to use the LogHub Target. You should use a ```BufferingWrapper``` with the LogHub target as follows, specifying your Service Bus connection string and a topic name:
 
 ```xml
   <nlog>
@@ -50,6 +51,8 @@ You should use a ```BufferingWrapper``` with the LogHub target as follows, speci
 You should then create log entries in your application in the [usual way](https://github.com/nlog/nlog/wiki/Tutorial#writing-log-messages).
 
 ## Receiving log entries
+Either download the code and build it yourself, or download an [installer](https://rbpublic.blob.core.windows.net/loghub/loghub-setup.msi).
+
 Run LogHub from your start menu. It will launch as a system tray application, so double-click the tray icon to display the main user interface.
 
 You subscribe to a topic on your Service Bus by clicking "Add Source". You can specify the following fields:
