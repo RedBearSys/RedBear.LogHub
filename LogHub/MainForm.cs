@@ -42,17 +42,20 @@ namespace LogHub
 
         private void lstSources_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var source = (LogSource)lstSources.SelectedRows[0].DataBoundItem;
-
-            if (source != null)
+            if (lstSources.SelectedRows.Count > 0)
             {
-                var form = new AddEditTopic
+                var source = (LogSource)lstSources.SelectedRows[0].DataBoundItem;
+
+                if (source != null)
                 {
-                    Mode = AddEditTopic.ViewMode.Edit,
-                    Source = source
-                };
-                form.ShowDialog();
-                RefreshList();
+                    var form = new AddEditTopic
+                    {
+                        Mode = AddEditTopic.ViewMode.Edit,
+                        Source = source
+                    };
+                    form.ShowDialog();
+                    RefreshList();
+                }
             }
         }
 
