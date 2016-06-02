@@ -4,7 +4,7 @@ This is an example NLog configuration file.
 
 To learn how to edit this file, visit: https://github.com/nlog/nlog/wiki/Configuration-file
 -->
-<nlog>
+<nlog autoReload="true">
   <targets>
     <target name="log4view" type="NLogViewer" address="tcp://127.0.0.1:878" />
   </targets>
