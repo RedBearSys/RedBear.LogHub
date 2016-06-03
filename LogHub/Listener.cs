@@ -32,8 +32,12 @@ namespace LogHub
                     !namespaceManager.SubscriptionExists(_source.Topic,
                         $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}"))
                 {
-                    namespaceManager.CreateSubscription(_source.Topic,
-                        $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}");
+                    var description = new SubscriptionDescription(_source.Topic,
+                        $"{Environment.UserDomainName}-{Environment.MachineName}-{Environment.UserName}")
+                    {
+                        AutoDeleteOnIdle = TimeSpan.FromMinutes(15)
+                    };
+                    namespaceManager.CreateSubscription(description);
                 }
 
                 _client = SubscriptionClient.CreateFromConnectionString(_source.ConnectionString, _source.Topic,
