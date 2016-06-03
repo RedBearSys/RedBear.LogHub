@@ -118,12 +118,6 @@
   <ItemGroup>
     <Content Include="router.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LogHub.Target\LogHub.Target.csproj">
-      <Project>{721824cb-1291-45a0-9f50-67a4dd658597}</Project>
-      <Name>LogHub.Target</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
