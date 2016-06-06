@@ -6,7 +6,7 @@
         <title>NLog Target for use with LogHub</title>
         <authors>Red Bear Systems Limited</authors>
         <projectUrl>https://github.com/RedBearSys/LogHub</projectUrl>
-        <iconUrl>https://raw.githubusercontent.com/RedBearSys/LogHub/master/Media/icon.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/RedBearSys/RedBear.LogHub/master/Media/icon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>NLog Target for use with LogHub</description>
         <dependencies>
@@ -18,6 +18,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\LogHub\bin\Release\LogHub.Target.dll" target="lib\LogHub.Target.dll" />
+        <file src="..\src\LogHub\bin\Release\LogHub.Target.dll" target="lib\LogHub.Target.dll" />
     </files>
 </package>

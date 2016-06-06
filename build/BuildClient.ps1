@@ -20,9 +20,9 @@ $folder = (Get-ChildItem "C:\Program Files (x86)\Caphyon" | where { $_.psisconta
 $cmd = "C:\Program Files (x86)\Caphyon\" + $folder + "\bin\x86\AdvancedInstaller.com"
 
 echo "Updating the installer..."
-&$cmd /edit "$loghub\Setup\LogHub.aip" /SetVersion $msiversion
-&$cmd /edit "$loghub\Setup\LogHub.aip" /SetProperty ARMDisplayName="LogHub $fileversion"
-&$cmd /rebuild "$loghub\Setup\LogHub.aip"
+&$cmd /edit "$loghub\..\setup\LogHub.aip" /SetVersion $msiversion
+&$cmd /edit "$loghub\..\setup\LogHub.aip" /SetProperty ARMDisplayName="LogHub $fileversion"
+&$cmd /rebuild "$loghub\..\setup\LogHub.aip"
 
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

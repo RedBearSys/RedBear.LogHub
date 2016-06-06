@@ -40,15 +40,15 @@
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="LogHub.exe" Component_="LogHub.exe" FileName="LogHub.exe" Attributes="0" SourcePath="..\LogHub\bin\Release\LogHub.exe" SelfReg="false" NextFile="LogHub.exe.config" DigSign="true"/>
-    <ROW File="LogHub.exe.config" Component_="example.xml" FileName="LOGHUB~1.CON|LogHub.exe.config" Attributes="0" SourcePath="..\LogHub\bin\Release\LogHub.exe.config" SelfReg="false" NextFile="Microsoft.ServiceBus.dll"/>
-    <ROW File="Microsoft.ServiceBus.dll" Component_="Microsoft.ServiceBus.dll" FileName="MICROS~1.DLL|Microsoft.ServiceBus.dll" Attributes="0" SourcePath="..\LogHub\bin\Release\Microsoft.ServiceBus.dll" SelfReg="false" NextFile="Newtonsoft.Json.dll"/>
-    <ROW File="NLog.dll" Component_="NLog.dll" FileName="NLog.dll" Attributes="0" SourcePath="..\LogHub\bin\Release\NLog.dll" SelfReg="false"/>
-    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\LogHub\bin\Release\Newtonsoft.Json.dll" SelfReg="false" NextFile="NLog.dll"/>
-    <ROW File="example.xml" Component_="example.xml" FileName="example.xml" Attributes="0" SourcePath="..\LogHub\bin\Release\example.xml" SelfReg="false" NextFile="LogHub.exe"/>
+    <ROW File="LogHub.exe" Component_="LogHub.exe" FileName="LogHub.exe" Attributes="0" SourcePath="..\src\LogHub\bin\Release\LogHub.exe" SelfReg="false" NextFile="LogHub.exe.config" DigSign="true"/>
+    <ROW File="LogHub.exe.config" Component_="example.xml" FileName="LOGHUB~1.CON|LogHub.exe.config" Attributes="0" SourcePath="..\src\LogHub\bin\Release\LogHub.exe.config" SelfReg="false" NextFile="Microsoft.ServiceBus.dll"/>
+    <ROW File="Microsoft.ServiceBus.dll" Component_="Microsoft.ServiceBus.dll" FileName="MICROS~1.DLL|Microsoft.ServiceBus.dll" Attributes="0" SourcePath="..\src\LogHub\bin\Release\Microsoft.ServiceBus.dll" SelfReg="false" NextFile="Newtonsoft.Json.dll"/>
+    <ROW File="NLog.dll" Component_="NLog.dll" FileName="NLog.dll" Attributes="0" SourcePath="..\src\LogHub\bin\Release\NLog.dll" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\src\LogHub\bin\Release\Newtonsoft.Json.dll" SelfReg="false" NextFile="NLog.dll"/>
+    <ROW File="example.xml" Component_="example.xml" FileName="example.xml" Attributes="0" SourcePath="..\src\LogHub\bin\Release\example.xml" SelfReg="false" NextFile="LogHub.exe"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="..\Build" PackageFileName="loghub-setup" Languages="en_GB" InstallationType="4" UseLargeSchema="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="loghub-setup" Languages="en_GB" InstallationType="4" UseLargeSchema="true"/>
     <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
@@ -122,7 +122,7 @@
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
-    <ROW Name="LogHub.exe" SourcePath="..\LogHub\bin\Release\LogHub.exe" Index="0"/>
+    <ROW Name="LogHub.exe" SourcePath="..\src\LogHub\bin\Release\LogHub.exe" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
