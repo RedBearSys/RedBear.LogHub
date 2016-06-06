@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/RedBearSys/LogHub/master/Media/logo.png" width="300" />
+<img src="https://raw.githubusercontent.com/RedBearSys/RedBear.LogHub/master/media/logo.png" width="300" />
 
 An NLog-based bridge between remote applications and local debugging software using Azure Service Bus.
 
@@ -7,7 +7,7 @@ LogHub is a combination of an [NLog](http://nlog-project.org/) target and a syst
 
 This allows you to use a local log viewing application - e.g. [Sentinel](http://sentinel.codeplex.com/) or [Log4View](http://www.log4view.com/log4view/) - with production applications running anywhere in the world.
 
-<img src="https://raw.githubusercontent.com/RedBearSys/LogHub/master/Media/diagram.png" />
+<img src="https://raw.githubusercontent.com/RedBearSys/RedBear.LogHub/master/media/diagram.png" />
 
 The benefits of using LogHub versus getting your production applications to connect directly to a port on your workstation include:
 
